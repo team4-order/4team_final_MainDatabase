@@ -47,4 +47,4 @@ jobs:
         --application-name team4-order-db-deploy
         --deployment-config-name CodeDeployDefault.OneAtATime
         --deployment-group-name team4-order-deploy-group
-        --s3-location bucket=github-action-codedeploy-s3,bundleType=tgz,key=data/drcloud.tar.gz
+        --s3-location bucket=team4-order-db-bucket,bundleType=tgz,key=data/drcloud.tar.gz
