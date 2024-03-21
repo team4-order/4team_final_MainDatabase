@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: team4-order-code-deploy
 
 # Controls when the workflow will run
 on:
@@ -35,8 +35,8 @@ jobs:
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: ${{ AKIAS2AS2SLE2SRZPRVI }}
-        aws-secret-access-key: ${{ 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 }}
+        aws-access-key-id: ${{AKIAS2AS2SLE2SRZPRVI}}
+        aws-secret-access-key: ${{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}}
         aws-region: ap-northeast-2
         
     - name: upload to S3
