@@ -30,7 +30,7 @@ jobs:
    #     cp -r $GITHUB_WORKSPACE . 
       
     - name: db-docker 
-      run: tar cvfz db-docker.tar.gz .
+      run: tar cvfz db-docker.tar.gz *
        
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v4
