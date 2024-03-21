@@ -24,13 +24,13 @@ jobs:
       uses: actions/checkout@v4
 
     # Runs a single command using the runners shell 
-    - name: Clean temp directory
-      run: |
-        rm -rf *
-        cp -r $GITHUB_WORKSPACE . 
+   # - name: Clean temp directory
+   #   run: |
+  #      rm -rf *
+   #     cp -r $GITHUB_WORKSPACE . 
       
-    - name: archive drcloud 
-      run: tar cvfz ./drcloud.tar.gz *
+    - name: db-docker 
+      run: tar cvfz db-docker.tar.gz .
        
     - name: AWS configure credentials
       uses: aws-actions/configure-aws-credentials@v4
@@ -40,11 +40,11 @@ jobs:
         aws-region: ap-northeast-2
         
     - name: upload to S3
-      run: aws s3 cp --region ap-northeast-2 ./drcloud.tar.gz s3://team4-order-db-bucket/data/
+      run: aws s3 cp --region ap-northeast-2 db-docker.tar.gz s3://team4-order-db-bucket/data/
       
     - name: deploy with AWS codeDeploy
       run: aws deploy create-deployment
         --application-name team4-order-db-deploy
         --deployment-config-name CodeDeployDefault.OneAtATime
         --deployment-group-name team4-order-deploy-group
-        --s3-location bucket=team4-order-db-bucket,bundleType=tgz,key=data/drcloud.tar.gz
+        --s3-location bucket=team4-order-db-bucket,bundleType=tgz,key=data/db-docker.tar.gz
